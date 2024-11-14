@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <application 
+        android:allowBackup="true" 
+        android:label="FuckSmartisanNotes" 
+        android:supportsRtl="true" 
+        android:extractNativeLibs="false" >
+        <!-- 是否为Xposed模块 -->
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true"/>
+        <!-- 模块的简介（在框架中显示） -->
+        <meta-data
+            android:name="xposeddescription"
+            android:value="..." />
+        <!-- 模块最低支持的Api版本 一般填54即可 -->
+        <meta-data 
+            android:name="xposedminversion"     
+            android:value="54"/>
+        <!-- 模块作用域 -->
+        <meta-data
+            android:name="xposedscope"
+            android:resource="@array/xposedscope"/>
+    </application>
+</manifest>
