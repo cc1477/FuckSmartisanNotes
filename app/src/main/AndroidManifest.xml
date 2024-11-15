@@ -14,7 +14,7 @@
         <!-- 模块的简介（在框架中显示） -->
         <meta-data
             android:name="xposeddescription"
-            android:value="..." />
+            android:value="锤子便签的优化和去广" />
         <!-- 模块最低支持的Api版本 一般填54即可 -->
         <meta-data 
             android:name="xposedminversion"     
