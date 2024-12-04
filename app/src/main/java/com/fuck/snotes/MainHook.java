@@ -1,7 +1,6 @@
 package com.fuck.snotes;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.view.View;
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XposedBridge;
@@ -17,8 +16,6 @@ import org.luckypray.dexkit.query.matchers.FieldMatcher;
 import java.lang.reflect.Method;
 import java.lang.reflect.Field;
 import java.util.Collections;
-import android.content.Intent;
-import android.os.Bundle;
 import android.app.Activity;
 import de.robv.android.xposed.*;
 
