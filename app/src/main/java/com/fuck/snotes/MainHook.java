@@ -166,7 +166,6 @@ public class MainHook implements IXposedHookLoadPackage {
             XposedBridge.hookMethod(method, new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                    // 在onCreate方法执行之后，调用dismiss方法关闭对话框
                     param.thisObject.getClass().getMethod("dismiss").invoke(param.thisObject);
                 }
             });
@@ -193,18 +192,20 @@ public class MainHook implements IXposedHookLoadPackage {
                     if (param.getResult() != null) {
                         Class<?> buttonIDClass = hostClassLoader.loadClass("com.smartisanos.notes.widget.IActionBar$ButtonID");
                         Object aiButtonID = Enum.valueOf((Class<Enum>) buttonIDClass, "AI");
-                        
-                        if (param.args[0] == aiButtonID) {
+                        Object ragButtonID = Enum.valueOf((Class<Enum>) buttonIDClass, "RAG");
+    
+                        if (param.args[0] == aiButtonID || param.args[0] == ragButtonID) {
                             param.setResult(null);
                         }
                     }
                 }
             });
-            XposedBridge.log("隐藏 AIButton 成功");
+            XposedBridge.log("隐藏 AIButton 和 RAGButton 成功");
         } catch (Exception e) {
-            XposedBridge.log("隐藏 AIButton 失败: " + e);
+            XposedBridge.log("隐藏 AIButton 和 RAGButton 失败: " + e);
         }
     }
+
     
     private void hookHideViews(LoadPackageParam lpparam) {
         XposedHelpers.findAndHookMethod(Activity.class, "onResume", new XC_MethodHook() {
@@ -218,7 +219,6 @@ public class MainHook implements IXposedHookLoadPackage {
                     View ragButton = activity.findViewById(ragButtonResId);
                     if (ragButton != null) {
                         ragButton.setVisibility(View.GONE);
-                        XposedBridge.log("隐藏 rag_button 成功");
                     }
                 }
     
